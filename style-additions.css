@@ -1,0 +1,224 @@
+/* Animation styles */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes moveParticle {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, 10px);
+  }
+  50% {
+    transform: translate(0, 20px);
+  }
+  75% {
+    transform: translate(-10px, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Apply animations to elements */
+section {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+section.animate {
+  opacity: 1;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.section__pic-container {
+  transition: all 0.5s ease;
+}
+
+.section__pic-container:hover {
+  animation: pulse 2s infinite;
+}
+
+article {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+article.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn:hover::after {
+  left: 100%;
+}
+
+/* Skill bars */
+.skill-bar {
+  height: 6px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+  border-radius: 3px;
+  width: 0;
+  transition: width 1.5s ease-in-out;
+}
+
+article.animate .progress {
+  animation: progressAnimation 1.5s forwards;
+}
+
+@keyframes progressAnimation {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--width, 85%);
+  }
+}
+
+/* Particle background */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: rgba(53, 53, 53, 0.1);
+  border-radius: 50%;
+  animation: moveParticle 15s infinite linear;
+}
+
+/* Dark mode toggle */
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Dark mode styles */
+body.dark {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+body.dark p {
+  color: #cccccc;
+}
+
+body.dark .logo,
+body.dark a,
+body.dark h1,
+body.dark h2,
+body.dark h3 {
+  color: #f0f0f0;
+}
+
+body.dark a:hover {
+  color: #3498db;
+}
+
+body.dark .details-container,
+body.dark .project-card,
+body.dark .contact-info-upper-container {
+  background-color: #2a2a2a;
+  border-color: #444444;
+}
+
+body.dark .hamburger-icon span {
+  background-color: #f0f0f0;
+}
+
+body.dark .menu-links {
+  background-color: #1a1a1a;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+  z-index: 9999;
+  width: 0%;
+}
+
